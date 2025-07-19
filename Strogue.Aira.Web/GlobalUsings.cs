@@ -4,3 +4,4 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Razor;
 global using Strogue.Aira.Web.Services;
 global using System.Globalization;
+global using Strogue.Aira.Application;

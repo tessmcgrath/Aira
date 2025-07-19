@@ -9,6 +9,8 @@ public static class DependencyInjection
             ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
         });
 
+        builder.Services.AddApplicationServices();
+
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         builder.Services.AddControllersWithViews();
