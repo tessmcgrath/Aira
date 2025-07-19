@@ -4,6 +4,17 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationInsightsResourceId>/subscriptions/e4ac46d0-7c4e-444a-8c78-e22dd4cfce8b/resourceGroups/rg-strog-dev-neu/providers/microsoft.insights/components/app-strog-dev-neu</ApplicationInsightsResourceId>
+    <UserSecretsId>2d1b3bfa-c14b-4ac4-ab3c-fa296169ab44</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstractions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.13.2" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.23.0" />
+  </ItemGroup>
 
 </Project>
