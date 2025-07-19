@@ -13,11 +13,21 @@ public static class DependencyInjection
 
         builder.Services.AddControllersWithViews();
 
+        AddMultiLingualSupport(builder);
+
         return builder.Build();
     }
 
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
+        var supportedCultures = new[] { "en", "es", "pt", "pl" };
+        var localizationOptions = new RequestLocalizationOptions()
+            .SetDefaultCulture(supportedCultures[0])
+            .AddSupportedCultures(supportedCultures)
+            .AddSupportedUICultures(supportedCultures);
+
+
+        app.UseRequestLocalization(localizationOptions);
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
@@ -42,4 +52,38 @@ public static class DependencyInjection
 
         return app;
     }
+
+    #region Private Methods
+
+    private static void AddMultiLingualSupport(this WebApplicationBuilder builder)
+    {
+        #region Registering ResourcesPath
+
+        builder.Services.AddLocalization(options => options.ResourcesPath = "");
+
+        #endregion Registering ResourcesPath
+
+        builder.Services.AddMvc()
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization(options => {
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                    factory.Create(typeof(SharedResource));
+            });
+        builder.Services.Configure<RequestLocalizationOptions>(options =>
+        {
+            var cultures = new List<CultureInfo> {
+                new("en"),
+                new("es"),
+                new("pt"),
+                new("pl")
+            };
+            options.DefaultRequestCulture = new RequestCulture("en");
+            options.SupportedCultures = cultures;
+            options.SupportedUICultures = cultures;
+            options.RequestCultureProviders.Insert(0, new CookieRequestCultureProvider());
+        });
+        builder.Services.AddSingleton<SharedResourceService>();
+    }
+
+    #endregion Private Methods
 }

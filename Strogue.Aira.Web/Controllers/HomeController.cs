@@ -15,6 +15,7 @@ namespace Strogue.Aira.Web.Controllers
 
         public IActionResult Index()
         {
+            //_logger.LogInformation("Index action called for App Insights test by Peter...");
             return View();
         }
 
