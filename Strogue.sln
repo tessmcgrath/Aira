@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D04DB67F-E202-432F-8423-42E49C501FBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{140CBE01-9241-4EC6-978C-753494B87C75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F3A0EFD0-0813-42BE-9E55-CC0D03227F44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{F9CA491C-12E2-4FC2-AD40-057D2759E855}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{4AE210C9-F00C-45D1-9095-CDCBA2C7F32D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{54ABC0AB-F01C-411F-948A-16D7425286EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strogue.Aira.Web", "Strogue.Aira.Web\Strogue.Aira.Web.csproj", "{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3A0EFD0-0813-42BE-9E55-CC0D03227F44} = {D04DB67F-E202-432F-8423-42E49C501FBB}
+		{F9CA491C-12E2-4FC2-AD40-057D2759E855} = {D04DB67F-E202-432F-8423-42E49C501FBB}
+		{4AE210C9-F00C-45D1-9095-CDCBA2C7F32D} = {D04DB67F-E202-432F-8423-42E49C501FBB}
+		{54ABC0AB-F01C-411F-948A-16D7425286EE} = {D04DB67F-E202-432F-8423-42E49C501FBB}
+		{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76} = {54ABC0AB-F01C-411F-948A-16D7425286EE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {114063C8-46C1-4B18-A5B5-8D965AD00523}
+	EndGlobalSection
+EndGlobal
