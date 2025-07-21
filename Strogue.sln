@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strogue.Aira.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strogue.Aira.Domain", "Strogue.Aira.Domain\Strogue.Aira.Domain.csproj", "{63D5F8F7-9FF0-4B1D-8B1F-AED9D1D0E856}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strogue.Aira.Persistence", "Strogue.Aira.Persistence\Strogue.Aira.Persistence.csproj", "{5EC15E4D-0F51-4757-99A6-78EFAA5D2EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{63D5F8F7-9FF0-4B1D-8B1F-AED9D1D0E856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D5F8F7-9FF0-4B1D-8B1F-AED9D1D0E856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D5F8F7-9FF0-4B1D-8B1F-AED9D1D0E856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC15E4D-0F51-4757-99A6-78EFAA5D2EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC15E4D-0F51-4757-99A6-78EFAA5D2EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC15E4D-0F51-4757-99A6-78EFAA5D2EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC15E4D-0F51-4757-99A6-78EFAA5D2EA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{153D1F3E-600A-4413-BA4D-4BAF1F4C9F76} = {54ABC0AB-F01C-411F-948A-16D7425286EE}
 		{43709A37-D4A2-4366-A147-99134350D28B} = {F3A0EFD0-0813-42BE-9E55-CC0D03227F44}
 		{63D5F8F7-9FF0-4B1D-8B1F-AED9D1D0E856} = {F3A0EFD0-0813-42BE-9E55-CC0D03227F44}
+		{5EC15E4D-0F51-4757-99A6-78EFAA5D2EA0} = {4AE210C9-F00C-45D1-9095-CDCBA2C7F32D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {114063C8-46C1-4B18-A5B5-8D965AD00523}

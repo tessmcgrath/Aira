@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Strogue.Aira.Application\Strogue.Aira.Application.csproj" />
+    <ProjectReference Include="..\Strogue.Aira.Persistence\Strogue.Aira.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
