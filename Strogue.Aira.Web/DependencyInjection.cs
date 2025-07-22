@@ -1,4 +1,7 @@
-﻿namespace Strogue.Aira.Web;
+﻿using Strogue.Aira.Application.Contracts;
+using Strogue.Aira.Web.Areas.Identity.Factories;
+
+namespace Strogue.Aira.Web;
 
 public static class DependencyInjection
 {
@@ -10,8 +13,14 @@ public static class DependencyInjection
         });
 
         builder.Services.AddApplicationServices();
+        builder.Services.AddInfrastructureServices();
+        builder.Services.AddPersistenceServices(builder.Configuration);
+
+
+        builder.Services.AddScoped<ILoggedInUserService, LoggedInUserService>();
 
         builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        builder.Services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, AppClaimsPrincipalFactory>();
 
         builder.Services.AddControllersWithViews();
 
@@ -30,6 +39,7 @@ public static class DependencyInjection
 
 
         app.UseRequestLocalization(localizationOptions);
+
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
@@ -46,11 +56,11 @@ public static class DependencyInjection
 
         app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Dashboard}/{action=Index}/{id?}")
             .WithStaticAssets();
 
-        //app.MapRazorPages()
-        //    .WithStaticAssets();
+        app.MapRazorPages()
+            .WithStaticAssets();
 
         return app;
     }
