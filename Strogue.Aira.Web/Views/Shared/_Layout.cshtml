@@ -1,55 +1,87 @@
-﻿@using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Strogue.Aira.Web</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Strogue.Aira.Web.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Strogue.Aira.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li>
-                            @await Html.PartialAsync("_culturepartial.cshtml")
-                        </li>
-                    </ul>
-                    @await Html.PartialAsync("_LoginPartial.cshtml")
+﻿@await Html.PartialAsync("Sections/_Variables")
+@{
+    TempData.Keep();
+    Layout = "_AiraMasterLayout";
+
+    ViewData["contentNavbar"] = true;
+
+    @* Display elements *@
+    ViewData["isNavbar"] = (ViewData["isNavbar"] ??= true);
+    ViewData["isMenu"] = (ViewData["isMenu"] ??= true);
+    ViewData["isFlex"] = (ViewData["isFlex"] ??= false);
+    ViewData["isFooter"] = (ViewData["isFooter"] ??= true);
+
+
+    @*HTML Classes *@
+    ViewData["navbarDetached"] = (ViewData["navbarDetached"] ?? "navbar-detached");
+
+    @*Content classes *@
+    ViewData["container"] = (ViewData["container"] ?? "container-xxl");
+    ViewData["containerNav"] = (ViewData["containerNav"] ?? "container-xxl");
+}
+
+@section VendorStyles {
+    @await RenderSectionAsync("VendorStyles", required: false)
+}
+
+@section PageStyles {
+    @await RenderSectionAsync("PageStyles", required: false)
+}
+
+@section VendorScripts {
+    @await RenderSectionAsync("VendorScripts", required: false)
+}
+
+@section PageScripts {
+    @await RenderSectionAsync("PageScripts", required: false)
+}
+
+@{
+    var isMenu = ViewData["isMenu"] != null && Convert.ToBoolean(ViewData["isMenu"]);
+}
+
+<div class='layout-wrapper layout-content-navbar @(isMenu ? "" : "layout-without-menu")'>
+    <div class="layout-container">
+
+        @if (isMenu)
+        {
+            @await Html.PartialAsync("Sections/Menu/_VerticalMenu")
+        }
+
+        <!-- Layout page -->
+        <div class="layout-page">
+            <!-- Navbar -->
+            @if (@ViewData["isNavbar"] != null && Convert.ToBoolean(@ViewData["isNavbar"]))
+            {
+                @await Html.PartialAsync("Sections/Navbar/_Navbar")
+            }
+            <!-- / Navbar -->
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+
+                <!-- Content -->
+                <div class='@ViewData["container"] @(Convert.ToBoolean(@ViewData["isFlex"]) ? "d-flex align-items-stretch flex-grow-1 p-0" : "flex-grow-1 container-p-y")'>
+                    @RenderBody()
                 </div>
+                <!-- / Content -->
+                <!-- Footer -->
+                @if (@ViewData["isFooter"] != null && Convert.ToBoolean(@ViewData["isFooter"]))
+                {
+                    @await Html.PartialAsync("Sections/Footer/_Footer")
+                }
+                <!-- / Footer -->
+                <div class="content-backdrop fade"></div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <!--/ Content wrapper -->
+        </div>
+        <!-- / Layout page -->
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Strogue.Aira.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+    <!-- Overlay -->
+    @if (@ViewData["isMenu"] != null && Convert.ToBoolean(@ViewData["isMenu"]))
+    {
+        <div class="layout-overlay layout-menu-toggle"></div>
+    }
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
+</div>

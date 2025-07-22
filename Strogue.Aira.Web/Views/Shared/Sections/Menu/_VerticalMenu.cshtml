@@ -1,0 +1,174 @@
+﻿@{
+    TempData.Keep();
+    string? currentPage = ViewContext.HttpContext.Request.Path;
+}
+
+<!-- Menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+    <div class='app-brand demo @((@ViewData["navbarFull"] != null && Convert.ToBoolean(@ViewData["navbarFull"])) ? "d-xl-none" : "")'>
+        <a asp-controller="Dashboard" asp-action="Index" class="app-brand-link">
+            <span class="app-brand-logo demo">
+                @await Html.PartialAsync("../_Partials/_Macros")
+            </span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">@TempData.Peek("appName")</span>
+        </a>
+
+        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+            <i class="bx bx-chevron-left bx-sm d-flex align-items-center justify-content-center"></i>
+        </a>
+    </div>
+
+    <div class="menu-inner-shadow"></div>
+
+    <ul class="menu-inner py-1">
+        <!-- Dashboards -->
+        <li class='menu-item@(currentPage.EndsWith("/") || currentPage.StartsWith("/Dashboard/") ? " active open" : "")'>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-home-smile"></i>
+                <div class="text-truncate">@Localization.GetLocalizedString("str_dashboards")</div>
+                <span class="badge rounded-pill bg-danger ms-auto">1</span>
+            </a>
+            <ul class="menu-sub">
+                <li class='menu-item@(currentPage == "/" ? " active" : "")'>
+                    <a asp-controller="Dashboard" asp-action="Index" class="menu-link">
+                        <div>@Localization.GetLocalizedString("str_analytics")</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Dashboards/CRM" ? " active" : "")'>
+                    <a href="https://demos.themeselection.com/sneat-aspnet-core-mvc-admin-template/html/vertical-menu-template/dashboards-crm.html" target="_blank" class="menu-link">
+                        <div>CRM</div><div class="badge bg-label-primary fs-tiny rounded-pill ms-auto text-uppercase">Pro</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Ecommerce/Dashboard" ? " active" : "")'>
+                    <a href="https://demos.themeselection.com/sneat-aspnet-core-mvc-admin-template/html/vertical-menu-template/app-ecommerce-dashboard.html" target="_blank" class="menu-link">
+                        <div>eCommerce</div><div class="badge bg-label-primary fs-tiny rounded-pill ms-auto text-uppercase">Pro</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Logistics/Dashboard" ? " active" : "")'>
+                    <a href="https://demos.themeselection.com/sneat-aspnet-core-mvc-admin-template/html/vertical-menu-template/app-logistics-dashboard.html" target="_blank" class="menu-link">
+                        <div>Logistics</div><div class="badge bg-label-primary fs-tiny rounded-pill ms-auto text-uppercase">Pro</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Academy/Dashboard" ? " active" : "")'>
+                    <a href="https://demos.themeselection.com/sneat-aspnet-core-mvc-admin-template/html/vertical-menu-template/app-academy-dashboard.html" target="_blank" class="menu-link">
+                        <div>Academy</div><div class="badge bg-label-primary fs-tiny rounded-pill ms-auto text-uppercase">Pro</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Safety -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">@Localization.GetLocalizedString("str_incident_categories")</span>
+        </li>
+
+        <li class='menu-item@(currentPage.StartsWith("/Safety") ? " active open" : "")'>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div>@Localization.GetLocalizedString("str_safety")</div>
+            </a>
+            <ul class="menu-sub">
+                <li class='menu-item@(currentPage == "/Safety/Dashboard/Index" ? " active" : "")'>
+                    <a asp-area="Safety" asp-controller="Dashboard" asp-action="Index" class="menu-link">
+                        <div>@Localization.GetLocalizedString("str_dashboard")</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsNotifications" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsNotifications" class="menu-link">
+                        <div>Notifications</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsConnections" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsConnections" class="menu-link">
+                        <div>Connections</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /Safety -->
+        <!-- Security -->
+        <li class='menu-item@(currentPage.StartsWith("/Security") ? " active open" : "")'>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+                <div>@Localization.GetLocalizedString("str_security")</div>
+            </a>
+            <ul class="menu-sub">
+                <li class='menu-item@(currentPage == "/Security/Dashboard/Index" ? " active" : "")'>
+                    <a asp-area="Security" asp-controller="Dashboard" asp-action="Index" class="menu-link">
+                        <div>@Localization.GetLocalizedString("str_dashboard")</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsNotifications" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsNotifications" class="menu-link">
+                        <div>Notifications</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsConnections" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsConnections" class="menu-link">
+                        <div>Connections</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /Security -->
+        <!-- Admin -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">@Localization.GetLocalizedString("str_admin")</span>
+        </li>
+
+        <li class='menu-item@(currentPage.StartsWith("/LookUp") ? " active open" : "")'>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div>@Localization.GetLocalizedString("str_lookup_data")</div>
+            </a>
+            <ul class="menu-sub">
+                <li class='menu-item@(currentPage == "/LookUp/Continent/Index" || currentPage == "/LookUp/Continent/Create" || currentPage.Contains("/LookUp/Continent/Edit") ? " active" : "")'>
+                    <a asp-area="LookUp" asp-controller="Continent" asp-action="Index" class="menu-link">
+                        <div>@Localization.GetLocalizedString("str_continents")</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsNotifications" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsNotifications" class="menu-link">
+                        <div>Notifications</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsConnections" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsConnections" class="menu-link">
+                        <div>Connections</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /Admin -->
+        <!-- Compliance -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">@Localization.GetLocalizedString("str_compliance")</span>
+        </li>
+
+        <li class='menu-item@(currentPage.StartsWith("/Compliance") ? " active open" : "")'>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div>@Localization.GetLocalizedString("str_data")</div>
+            </a>
+            <ul class="menu-sub">
+                <li class='menu-item@(currentPage == "/Compliance/AuditLog/Index" ? " active" : "")'>
+                    <a asp-area="Compliance" asp-controller="AuditLog" asp-action="Index" class="menu-link">
+                        <div>@Localization.GetLocalizedString("str_audit_log")</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Compliance/Cdc/Index" ? " active" : "")'>
+                    <a asp-area="Compliance" asp-controller="Cdc" asp-action="Index" class="menu-link">
+                        <div>CDC</div>
+                    </a>
+                </li>
+                <li class='menu-item@(currentPage == "/Pages/AccountSettingsConnections" ? " active" : "")'>
+                    <a asp-controller="Pages" asp-action="AccountSettingsConnections" class="menu-link">
+                        <div>Connections</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /Compliance -->
+    </ul>
+</aside>
+<!-- / Menu -->
