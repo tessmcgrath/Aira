@@ -15,3 +15,4 @@ global using Strogue.Aira.Infrastructure;
 global using Strogue.Aira.Persistence;
 global using Strogue.Aira.Application.Contracts;
 global using Strogue.Aira.Web.Areas.Identity.Extensions;
+global using Strogue.Aira.Web.Areas.Identity.Factories;

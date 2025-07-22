@@ -1,7 +1,4 @@
-﻿using Strogue.Aira.Application.Contracts;
-using Strogue.Aira.Web.Areas.Identity.Factories;
-
-namespace Strogue.Aira.Web;
+﻿namespace Strogue.Aira.Web;
 
 public static class DependencyInjection
 {
@@ -56,7 +53,7 @@ public static class DependencyInjection
 
         app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Dashboard}/{action=Index}/{id?}")
+                pattern: "{controller=Home}/{action=Index}/{id?}")
             .WithStaticAssets();
 
         app.MapRazorPages()
